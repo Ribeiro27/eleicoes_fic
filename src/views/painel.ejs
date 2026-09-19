@@ -1,0 +1,25 @@
+<%- include('partials/cabecalho.ejs') %>
+<h1>Painel Administrativo</h1>
+<h2>Relatorio de votação</h2>
+
+<form action="/painel/cad-candidato" method="POST">
+
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" placeholder="Digite o nome">
+    <label for="numeroUrna">Numero da Urna:</label>
+    <input type="number" name="numeroUrna" id="numeroUrna" placeholder="Digite o número da urna">
+    <button type="submit">Cadastrar Candidato</button>
+</form>
+
+<h2>Relatorio de votação</h2>
+<table>
+    <% for(const linha of Relatorio) {%>
+        <tr>
+            <td><%= linha.numeroUrna %></td>
+            <td><%= linha.nome %></td>
+            <td><%= linha.votos %></td>
+        </tr>
+        <% } %>
+</table>
+<a href="/painel/logout">Sair  </a>
+<%- include('partials/rodape.ejs') %>
